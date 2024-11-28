@@ -12,56 +12,47 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ImageCustom from './ImageCustom';
+import PopModal from './PopModal';
 
 const Susunan = ({
   title1 = 'editable',
   title2 = 'editable',
   describe = 'editable',
-  color = 'black',
+  color = 'grey',
   gambar = gambar,
   PopModal,
-  linker,
 }) => {
   return (
-    <View
-      style={{
-        backgroundColor: 'white',
-        borderColor: 'grey',
-        borderWidth: 1,
-        borderRadius: 10,
-        width: 300,
-        padding: 20,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignSelf: 'center',
-        marginTop: 20,
-      }}>
-      <ImageCustom gambar={gambar} style={{width: 50, height: 50}} />
+    <TouchableOpacity>
       <View
         style={{
-          flexDirection: 'column',
+          flexDirection: 'row',
           alignItems: 'center',
-          width: 150,
+          backgroundColor: 'black',
+          borderBottomColor: 'grey',
+          borderBottomWidth: 1,
+          padding: 10,
         }}>
-        <Text style={{fontSize: 20, textAlign: 'center'}}>{title1}</Text>
-        <Text style={{fontSize: 10, textAlign: 'center'}}>{title2}</Text>
-        <TouchableOpacity
+        <ImageCustom gambar={gambar} />
+        <View
           style={{
-            borderColor: 'black',
-
-            padding: 10,
-
-            justifyContent: 'center',
+            marginHorizontal: 20,
           }}>
-          <Icon
-            name="caret-down-outline"
-            size={40}
-            color="grey"
-            onPress={linker}
-          />
-        </TouchableOpacity>
+          <Text style={{fontSize: 25, color: color, fontWeight: 200}}>
+            {title1}
+          </Text>
+          <Text
+            style={{
+              fontSize: 15,
+              color: color,
+              marginTop: 10,
+              fontWeight: 500,
+            }}>
+            {title2}
+          </Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

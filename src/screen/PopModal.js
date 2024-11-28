@@ -1,50 +1,99 @@
 import React, {useState} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  Modal,
-  Button,
-} from 'react-native';
+import {View, Text, Modal, Button, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+const PopModal = ({icons = 'log-out-outline', color = 'red', size = 35}) => {
+  const [modalVisible, setModalVisible] = useState(false);
 
-const PopModal = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  const requestCloseModal = () => {
-    setIsVisible(false);
-  };
-
-  const openModal = () => {
-    setIsVisible(true);
-  };
   return (
-    <View style={{flex: 1}}>
+    <View>
+      {/* Modal */}
       <Modal
-        visible={isVisible}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
         animationType="fade"
-        onRequestClose={() => requestCloseModal()}
         transparent={true}>
         <View
           style={{
-            flex: 1,
-            backgroundColor: 'rgba(0,0,0,0.5)',
-            justifyContent: 'center',
-            alignItems: 'center',
+            justifyContent: 'flex-start',
+            alignItems: 'flex-end',
+            paddingTop: 90,
           }}>
           <View
             style={{
-              height: '30%',
-              width: '90%',
-              backgroundColor: 'white',
-            }}></View>
+              height: '60%',
+              width: '60%',
+              backgroundColor: 'black',
+              borderColor: 'grey',
+              borderWidth: 0.5,
+            }}>
+            <TouchableOpacity>
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: 20,
+                  padding: 10,
+                  borderBottomColor: 'grey',
+                  borderBottomWidth: 0.5,
+                }}>
+                Grup Baru
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: 20,
+                  padding: 10,
+                  borderBottomColor: 'grey',
+                  borderBottomWidth: 0.5,
+                }}>
+                Siaran Baru
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: 20,
+                  padding: 10,
+                  borderBottomColor: 'grey',
+                  borderBottomWidth: 0.5,
+                }}>
+                Perangkat Tertaut
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: 20,
+                  padding: 10,
+                  borderBottomColor: 'grey',
+                  borderBottomWidth: 0.5,
+                }}>
+                Pesan Berbintang
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: 20,
+                  padding: 10,
+                }}>
+                Setelan
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </Modal>
+
+      {/* Button */}
+      <TouchableOpacity onPress={() => setModalVisible(true)}>
+        <Icon name={icons} size={size} color={color} />
+      </TouchableOpacity>
     </View>
   );
 };
+
 export default PopModal;
